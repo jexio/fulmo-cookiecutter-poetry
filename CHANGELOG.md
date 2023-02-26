@@ -1,6 +1,13 @@
-## Unreleased
+## 0.3.1 (2023-02-27)
 
 
+- bump: version 0.3.0 → 0.3.1
+- fix(tasks): fix broken name
+
+## 0.3.0 (2023-02-27)
+
+
+- bump: version 0.2.0 → 0.3.0
 - docs: fix broken links
 - fix(github): add interrogate tool in quality workflow
 - feat(cookiecutter): add initial template for project generation
