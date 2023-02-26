@@ -37,6 +37,9 @@ jobs:
       - name: Check for vulnerabilities in dependencies
         run: poetry run duty check-dependencies
 
+      - name: Interrogate a codebase for docstring coverage
+        run: poetry run duty check-docstring-coverage
+
   tox:
     runs-on: ubuntu-latest
     strategy:
