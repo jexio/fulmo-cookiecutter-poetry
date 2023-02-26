@@ -93,14 +93,11 @@ You are now ready to start development on your project! The CI/CD
 pipeline will be triggered when you open a pull request, merge to main,
 or when you create a new release.
 <br>
-To finalize the set-up for publishing to PyPi, see
-<a href="https://jexio.github.io/fulmo-cookiecutter-poetry/features/publishing/#set-up-for-pypi", title="PyPi">here</a>
+To finalize the set-up for publishing to PyPi, see [here](https://jexio.github.io/fulmo-cookiecutter-poetry/features/publishing/#set-up-for-pypi/)
 <br>
-For activating the automatic documentation with MkDocs, see
-<a href="https://jexio.github.io/fulmo-cookiecutter-poetry/features/mkdocs/#enabling-the-documentation-on-github", title="automatic documentation with MkDocs">here</a>
+For activating the automatic documentation with MkDocs, see [here](https://jexio.github.io/fulmo-cookiecutter-poetry/features/mkdocs/#enabling-the-documentation-on-github/)
 <br>
-To enable the code coverage reports, see
-<a href="https://jexio.github.io/fulmo-cookiecutter-poetry/features/codecov/", title="coverage reports">here</a>
+To enable the code coverage reports, see [here](https://jexio.github.io/fulmo-cookiecutter-poetry/features/codecov/)
 </details>
 
 ## Credits
