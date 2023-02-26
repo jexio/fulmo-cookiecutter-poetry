@@ -1,0 +1,240 @@
+{% set license_classifiers = {
+    'MIT': 'License :: OSI Approved :: MIT License',
+    'BSD': 'License :: OSI Approved :: BSD License',
+    'ISC': 'License :: OSI Approved :: ISC License (ISCL)',
+    'Apache Software License 2.0': 'License :: OSI Approved :: Apache Software License',
+    'GNU General Public License v3': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)'
+} %}
+[tool.poetry]
+name = "{{cookiecutter.project_slug}}"
+version = "{{ cookiecutter.version }}"
+description = "{{cookiecutter.project_description}}"
+authors = ["{{cookiecutter.author}} <f{{cookiecutter.email}}>"]
+{% if cookiecutter.open_source_license == "Not open source" %}
+license = "{{ cookiecutter.open_source_license }}"
+{% endif %}
+repository = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}"
+documentation = "https://{{cookiecutter.github_username}}.github.io/{{cookiecutter.project_name}}/"
+readme = "README.md"
+packages = [
+  {include = "{{cookiecutter.project_slug}}"}
+]
+classifiers=[
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    {% if cookiecutter.open_source_license in license_classifiers %}
+    "{{ license_classifiers[cookiecutter.open_source_license] }}",
+    {% endif %}
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development",
+]
+
+{% if cookiecutter.command_line_interface|lower == 'click' %}
+[tool.poetry.scripts]
+{{ cookiecutter.project_name }} = '{{ cookiecutter.project_slug }}.cli:main'
+{% endif %}
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^2.20.0"
+pytest = "^7.2.0"
+{% if cookiecutter.codecov == 'y' -%}
+pytest-cov = "^4.0.0"
+{% endif -%}
+tox = "^3.25.1"
+ruff = "^0.0.252"
+mypy = "^0.991"
+black = "^23.1.0"
+blacken-docs = "^1.13.0"
+interrogate = "^1.5.0"
+duty = "^0.8.0"
+{% if cookiecutter.commitizen == "y"-%}
+commitizen = "^2.42.1"
+{%- endif %}
+
+{% if cookiecutter.mkdocs == 'y' -%}
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocs-material = "^8.5.10"
+mkdocstrings = {extras = ["python"], version = "^0.19.0"}
+{%- endif %}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ["py310"]
+preview = true
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+select = [
+    "ALL"
+]
+ignore = [
+    "A001",  # Variable is shadowing a Python builtin
+    "ANN101",  # Missing type annotation for self
+    "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+    "C901",  # Too complex
+    "D105",  # Missing docstring in magic method
+    "D417",  # Missing argument description in the docstring
+    "E501",  # Line too long
+    "PLR0911",  # Too many return statements
+    "PLR0912",  # Too many branches
+    "PLR0913",  # Too many arguments to function call
+    "PLR0915",  # Too many statements
+    "TRY003",  # Avoid specifying long messages outside the exception class
+]
+
+[tool.ruff.per-file-ignores]
+"scripts/*.py" = [
+    "INP001",  # File is part of an implicit namespace package
+]
+"tests/*.py" = [
+    "ANN",  # Missing/wrong type annotations
+    "ARG005",  # Unused lambda argument
+    "PLR2004",  # Magic value used in comparison
+    "S101",  # Use of assert detected
+]
+"hooks/*.py" = [
+    "PLR0133", # Two constants compared in a comparison, consider replacing
+    "FBT001", # Boolean positional arg in function definition
+    "FBT002", # Boolean default value in function definition
+]
+"*/*__init__.py" = [
+    "D104", # Missing docstring in public package
+]
+
+[tool.ruff.flake8-type-checking]
+exempt-modules = ["typing"]
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.isort]
+known-first-party = ["{{cookiecutter.project_slug}}"]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.interrogate]
+ignore-init-method = true
+ignore-init-module = true
+ignore-magic = true
+ignore-semiprivate = false
+ignore-private = false
+ignore-property-decorators = false
+ignore-module = false
+ignore-nested-functions = false
+ignore-nested-classes = true
+ignore-setters = false
+fail-under = 95
+exclude = ["docs", "build", "static", "{{cookiecutter.project_name}}"]
+ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*"]
+verbose = 0
+quiet = false
+whitelist-regex = []
+color = true
+omit-covered-files = false
+generate-badge = "./docs/static"
+badge-format = "svg"
+
+[tool.mypy]
+files = ["{{cookiecutter.project_slug}}"]
+warn_return_any = "True"
+warn_unused_ignores = "True"
+show_error_codes = "True"
+
+[[tool.mypy.overrides]]
+module = ["pytest.*", "interrogate.*"]
+ignore_missing_imports = "True"
+
+{% if cookiecutter.codecov == "y"-%}
+[tool.coverage.report]
+skip_empty = true
+exclude_lines = [
+  "pragma: no cover",
+  "def __repr__",
+  "if self.debug",
+  "if settings.DEBUG:",
+  "raise AssertionError",
+  "raise NotImplementedError",
+  "if 0:",
+  "if __name__ == __main__:",
+  "if TYPE_CHECKING:"
+]
+
+[tool.coverage.run]
+branch = true
+source = ["{{cookiecutter.project_slug}}"]
+{% endif%}
+
+{% if cookiecutter.commitizen == "y"-%}
+{% raw %}
+[tool.commitizen]
+name = "cz_customize"
+version = "0.1.0"
+version_files = ["pyproject.toml:version", "{{cookiecutter.project_slug}}.__init__.py"]
+
+[tool.commitizen.customize]
+message_template = "{{type}}{% if scope %}({{scope}}){% endif %}{% if is_breaking_change %}!{% endif %}: {{subject}}{% if body %}\n\n{{body}}{% endif %}{% if footer %}\n\n{{footer}}{% endif %}"
+example = "fix(api): correct minor typos in code\n\nsee the issue for details on the typos fixed\n\ncloses issue #12"
+schema = "<type>(<scope>): <subject>\n<BLANK LINE>\n<body>\n<BLANK LINE>\n(BREAKING CHANGE: )<footer>"
+schema_pattern = "^(build|chore|ci|docs|feat|fix|perf|refactor|style|test|revert)(\\(\\S+\\))?!?:(\\s.*)"
+
+[[tool.commitizen.customize.questions]]
+type = "list"
+name = "type"
+choices = [
+   {"value" = "fix",            "name" = "🐛 fix:           Bug fix (correlates with PATCH in SemVer)"},
+   {"value" = "feat",           "name" = "✨ feat:           New feature (correlates with MINOR in SemVer)"},
+   {"value" = "docs",           "name" = "📝 docs:          Changes to documentation"},
+   {"value" = "style",          "name" = "🎨 style:         Changes that do not affect the meaning of the code (white-space, formatting, etc...)"},
+   {"value" = "refactor",       "name" = "🔨 refactor:      Changes that neither fixe a bug nor add a feature"},
+   {"value" = "perf",           "name" = "⚡️ perf:          Changes that improve performance"},
+   {"value" = "test",           "name" = "🧪 test:          Adding or refactoring tests"},
+   {"value" = "build",          "name" = "👷 build:         Changes that affect the build system or external dependencies (example scopes: pip, make)"},
+   {"value" = "ci",             "name" = "🚀 ci:            Changes to CI config files and scripts (pipelines as code, GH actions, etc...)"},
+   {"value" = "chore",          "name" = "⚙️  chore:        Other changes that don't modify src or test files"},
+   {"value" = "revert",   "name" = "💩 revert:   Reverts a previous commit"}
+]
+message = "[type] Select the type of change you are committing"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "scope"
+message = "[scope] What is the scope of this change? ([enter] to skip):"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "subject"
+message = "[subject] Short and imperative summary of the code changes (lower case, no period at end, 72 char max):"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "body"
+message = "[body] Provide additional contextual information about the code changes ([enter] to skip):"
+
+[[tool.commitizen.customize.questions]]
+type = "confirm"
+name = "is_breaking_change"
+message = "[breaking] Is this a BREAKING CHANGE? Correlates with MAJOR in SemVer"
+default = false
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "footer"
+message = "[footer] Info about Breaking Changes and reference issues that this commit closes ([enter] to skip):"
+{% endraw %}
+{% endif%}
