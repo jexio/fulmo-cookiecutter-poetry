@@ -1,0 +1,24 @@
+## Unreleased
+
+
+- docs: fix broken links
+- fix(github): add interrogate tool in quality workflow
+- feat(cookiecutter): add initial template for project generation
+- feat(cli): add cli to run the cookiecutter with the directory passed
+- test(cookiecutter): check that files that use the cookiecutter template insert data without errors
+- feat(cookiecutter): add pre/post generation hooks
+- feat(task): add makefile and cli to run development tasks
+- For more details see `docs/makefile.md`
+- chore(git): add initial git files
+- The purpose of each file is described below:
+1. `.gitignore` file specifies intentionally untracked files that Git should ignore.
+2. Configuration file `pre-commit-config.yaml` for the framework to manage and support multi-language pre-commit hooks.
+- chore(cookiecutter): add cookiecutter template
+- chore(dependency): add initial poetry files
+- docs: add template `mkdocs.yml` for static site generator MkDocs
+- docs: add MIT license file
+- chore(ide): add .editorconfig file
+- ci(github): add initial workflow files
+- Also add auxiliary files:
+1. Tox. A generic virtual environment management and test command line tool.
+- docs: add initial documentations
