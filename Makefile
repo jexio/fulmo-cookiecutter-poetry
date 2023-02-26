@@ -54,7 +54,7 @@ build: clean-build ## Build wheel file using poetry
 	@poetry build
 
 .PHONY: clean
-clean: ## clean build, test and linting artifacts
+clean-build: ## clean build, test and linting artifacts
 	@poetry run duty clean
 
 .PHONY: publish

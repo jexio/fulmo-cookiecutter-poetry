@@ -34,7 +34,7 @@ build: clean-build ## Build wheel file using poetry
 	@poetry build
 
 .PHONY: clean
-clean: ## clean build artifacts
+clean-build: ## clean build, test and linting artifacts
 	@poetry run duty clean
 
 {%- if cookiecutter.publish_to == "pypi"%}
