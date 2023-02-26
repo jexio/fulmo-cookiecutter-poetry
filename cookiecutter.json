@@ -1,0 +1,16 @@
+{
+    "author": "Gleb Glushkov",
+    "email": "ptjexio@gmail.com",
+    "github_username": "jexio",
+    "project_name": "example-project",
+    "project_slug": "{{cookiecutter.project_name|lower|replace('-', '_')}}",
+    "project_description": "This is a template repository for Python projects that use Poetry for their dependency management.",
+    "version": "0.1.0",
+    "include_github_actions": ["y","n"],
+    "publish_to": ["pypi", "none"],
+    "mkdocs": ["y", "n"],
+    "codecov" : ["y","n"],
+    "commitizen": ["y", "n"],
+    "open_source_license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "Not open source"],
+    "command_line_interface": ["Click", "No command-line interface"]
+}
