@@ -40,6 +40,9 @@ jobs:
       - name: Interrogate a codebase for docstring coverage
         run: poetry run duty check-docstring-coverage
 
+      - name: Build a wily cache with the statistics of your project
+        run: wily build .
+
       - name: Tracking the complexity of Python code
         run: poetry run duty wily
 
