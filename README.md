@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="300" src="https://raw.githubusercontent.com/jexio/fulmo-cookiecutter-poetry/main/docs/static/cookiecutter.svg">
+  <img width="100" src="https://raw.githubusercontent.com/jexio/fulmo-cookiecutter-poetry/main/docs/static/cookiecutter.svg">
 </p style = "margin-bottom: 2rem;">
 
 ---
@@ -110,7 +110,7 @@ This cookiecutter was built for learning purpose and inspired by:
 * [hypermodern-python][hypermodern-python]: Hypermodern Python article series.
 
 
-[fedejaure/cookiecutter-modern-pypackage]: [https://github.com/fedejaure/cookiecutter-modern-pypackage]
-[pawamoy/copier-pdm]: [https://github.com/pawamoy/copier-pdm]
-[fpgmaas/cookiecutter-poetry]: [https://github.com/fpgmaas/cookiecutter-poetry]
+[fedejaure/cookiecutter-modern-pypackage]: https://github.com/fedejaure/cookiecutter-modern-pypackage
+[pawamoy/copier-pdm]: https://github.com/pawamoy/copier-pdm
+[fpgmaas/cookiecutter-poetry]: https://github.com/fpgmaas/cookiecutter-poetry
 [hypermodern-python]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
