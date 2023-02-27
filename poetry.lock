@@ -20,6 +20,21 @@ devel = ["bumpversion (>=0.5.2)", "check-manifest (>=0.35)", "flake8", "pep8-nam
 tests = ["pytest (>=3.0.3)", "pytest-cov (>=2.3.1)", "tox (>=2.6.0)"]
 
 [[package]]
+name = "anybadge"
+version = "1.14.0"
+description = "Simple, flexible badge generator for project badges."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "anybadge-1.14.0-py3-none-any.whl", hash = "sha256:8711a7f7f45317c62a460f14084f005ba665cbebdf2a94e7df53bc3ab35df4c9"},
+    {file = "anybadge-1.14.0.tar.gz", hash = "sha256:47f06e0a6320d3e5eac55c712dc0bab71b9ed85353c591d448653c5a0740783f"},
+]
+
+[package.dependencies]
+packaging = "*"
+
+[[package]]
 name = "argcomplete"
 version = "2.0.0"
 description = "Bash tab completion for argparse"
@@ -1950,4 +1965,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "f46186cbccc0ae41fb94005df5b35f160582f024459ed41ecb945e94a25afb1a"
+content-hash = "69d356308869d297529508dffa4a3508fc77ca9dd0cbac0865ccb27d9990aa42"
