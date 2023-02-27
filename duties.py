@@ -329,3 +329,27 @@ def test(ctx: Context, match: str = "") -> None:
         pytest.run("tests", config_file="pyproject.toml", select=match),
         title="Running tests",
     )
+
+
+@duty
+def wily(ctx: Context) -> None:
+    """Tracking the complexity of Python code.
+
+    Args:
+        ctx: The context instance (passed automatically).
+    """
+    import re
+
+    stdout = ctx.run("wily rank", title="Tracking the complexity of Python code.")
+    floats = re.findall(r"\d+\.\d+", stdout)
+    total = None
+    if floats:
+        total = int(float(floats[-1]))
+
+    if total:
+        output = Path(".") / "docs" / "static" / "wily_badge.svg"
+        ctx.run(
+            f"anybadge --label wily --value={total}% --file={output}"
+            f" --overwrite 0=red 40=orange 60=yellow 75=yellow_green 90=#97CA00 95=green",
+            silent=True,
+        )

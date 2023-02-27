@@ -42,6 +42,7 @@ check: ## Run code quality tools.
 	@poetry run duty check
 	@poetry run duty check_docstring_coverage
 	@poetry run duty check_docs
+	@poetry run duty wily
 
 .PHONY: test
 test: ## Test the code with pytest.

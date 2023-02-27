@@ -40,6 +40,9 @@ jobs:
       - name: Interrogate a codebase for docstring coverage
         run: poetry run duty check-docstring-coverage
 
+      - name: Tracking the complexity of Python code
+        run: poetry run duty wily
+
   tox:
     runs-on: ubuntu-latest
     strategy:
