@@ -1,6 +1,14 @@
-## 0.3.1 (2023-02-27)
+## 0.4.0 (2023-02-27)
 
 
+- bump: version 0.3.1 → 0.4.0
+- chore: update dependencies
+- feat(tasks): extract total maintainability index from wily `rank` function
+- docs: add wily badge
+- chore: update dependencies
+- chore: update python versions
+- docs: fix broken links and size of cookie image
+- ci(github): prevent generation commitizen hook if commitizen tool was rejected during project creation
 - bump: version 0.3.0 → 0.3.1
 - fix(tasks): fix broken name
 
