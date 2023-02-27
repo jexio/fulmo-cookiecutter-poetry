@@ -1,8 +1,14 @@
-## 0.4.1 (2023-02-27)
+## Unreleased
 
 
 - bump: version 0.4.0 → 0.4.1
+- bump: version 0.4.0 → 0.4.1
 - fix(github): build wily cache before ranking for all files
+- bump: version 0.3.1 → 0.4.0
+
+## 0.4.0 (2023-02-27)
+
+
 - bump: version 0.3.1 → 0.4.0
 - chore: update dependencies
 - feat(tasks): extract total maintainability index from wily `rank` function
