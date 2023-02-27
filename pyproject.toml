@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fulmo-cookiecutter-poetry"
-version = "0.4.1"
+version = "0.4.2"
 description = "A python cookiecutter application to create a new python project that uses poetry to manage its dependencies."
 authors = ["Gleb Glushkov <ptjexio@gmail.com>"]
 license = "MIT"
@@ -173,7 +173,7 @@ source = ["fulmo_cookiecutter_poetry"]
 
 [tool.commitizen]
 name = "cz_customize"
-version = "0.4.1"
+version = "0.4.2"
 version_files = ["pyproject.toml:version"]
 
 [tool.commitizen.customize]
