@@ -8,6 +8,7 @@
 [![Build status](https://img.shields.io/github/actions/workflow/status/jexio/fulmo-cookiecutter-poetry/main.yml?branch=main)](https://github.com/jexio/fulmo-cookiecutter-poetry/actions/workflows/main.yml?query=branch%3Amain)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/fulmo-cookiecutter-poetry)](https://pypi.org/project/fulmo-cookiecutter-poetry/)
 [![Documentation Coverage](https://raw.githubusercontent.com/jexio/fulmo-cookiecutter-poetry/main/docs/static/interrogate_badge.svg)](https://interrogate.readthedocs.io/)
+[![Maintainability Index](https://raw.githubusercontent.com/jexio/fulmo-cookiecutter-poetry/main/docs/static/wily_badge.svg)](https://wily.readthedocs.io/en/latest/)
 [![Docs](https://img.shields.io/badge/docs-gh--pages-blue)](https://jexio.github.io/fulmo-cookiecutter-poetry/)
 [![License](https://img.shields.io/github/license/jexio/fulmo-cookiecutter-poetry)](https://img.shields.io/github/license/jexio/fulmo-cookiecutter-poetry)
 
