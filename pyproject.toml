@@ -26,7 +26,7 @@ classifiers=[
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<4.0"
+python = ">=3.10,<4.0"
 cookiecutter = "^2.1.1"
 
 [tool.poetry.group.dev.dependencies]
@@ -44,6 +44,7 @@ wily = "^1.24.0"
 duty = "^0.8.0"
 safety = "2.3.4"
 commitizen = "^2.42.1"
+anybadge = "^1.14.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.4.2"
