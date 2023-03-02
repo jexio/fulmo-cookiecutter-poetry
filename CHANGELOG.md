@@ -1,4 +1,8 @@
-## Unreleased
+## 0.4.3 (2023-03-02)
+
+### Feat
+
+- **tasks**: add bump version task via commitizen tool
 
 ### Fix
 
