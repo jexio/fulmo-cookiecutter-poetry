@@ -353,3 +353,28 @@ def wily(ctx: Context) -> None:
             f" --overwrite 0=red 40=orange 60=yellow 75=yellow_green 90=#97CA00 95=green",
             silent=True,
         )
+
+
+@duty
+def version(
+    ctx: Context,
+    changelog: bool | None = None,
+    dry_run: bool | None = None,
+    increment: Literal["PATCH", "MINOR", "MAJOR"] | None = None,
+) -> None:
+    """Bump version.
+
+    Parameters:
+        ctx: The context instance (passed automatically).
+        increment: Manually specify the desired increment.
+        changelog: if True generate the changelog for the newest version
+        dry_run: if True show output to stdout, no commit, no modified files.
+    """
+    bump_options = []
+    if increment:
+        bump_options.append(f"--increment {increment}")
+    if changelog:
+        bump_options.append("--changelog")
+    if dry_run:
+        bump_options.append("--dry-run")
+    ctx.run(f"poetry run cz bump {' '.join(bump_options)}", capture=False)

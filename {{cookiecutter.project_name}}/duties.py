@@ -337,3 +337,30 @@ def test(ctx: Context, match: str = "") -> None:
         pytest.run("tests", config_file="pyproject.toml", select=match),
         title="Running tests",
     )
+
+
+
+{%- if cookiecutter.commitizen == "y" %}
+@duty
+def version(ctx: Context,
+            changelog: bool | None = None,
+            dry_run: bool | None = None,
+            increment: Literal["PATCH", "MINOR", "MAJOR"] | None = None,) -> None:
+    """Bump version.
+
+    Parameters:
+        ctx: The context instance (passed automatically).
+        increment: Manually specify the desired increment.
+        changelog: if True generate the changelog for the newest version
+        dry_run: if True show output to stdout, no commit, no modified files.
+    """
+    bump_options = []
+    if increment:
+        bump_options.append(f"--increment {increment}")
+    if changelog:
+        bump_options.append("--changelog")
+    if dry_run:
+        bump_options.append("--dry-run")
+
+    ctx.run(f"poetry run cz bump {' '.join(bump_options)}", capture=False)
+{% endif%}
